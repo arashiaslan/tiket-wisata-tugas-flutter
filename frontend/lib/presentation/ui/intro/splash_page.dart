@@ -16,14 +16,14 @@ class SplashPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(96.0),
         child: Center(
-          child: Assets.images.logoAppBlue.image(),
+          child: Assets.images.logoBlue.image(),
         ),
       ),
       bottomNavigationBar: SizedBox(
         height: 100.0,
         child: Align(
           alignment: Alignment.center,
-          child: Assets.images.logoIdn.image(width: 96.0),
+          child: Assets.images.logoCwb.image(width: 96.0),
         ),
       ),
     );

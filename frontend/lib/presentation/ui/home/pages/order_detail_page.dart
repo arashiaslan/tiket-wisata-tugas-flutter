@@ -119,8 +119,6 @@ class OrderDetailPage extends StatelessWidget {
                               totalPrice: 140000,
                             ),
                           );
-                        } else if (paymentButtonIndex == 2) {
-                          // TODO: implement transfer
                         }
                       },
                       label: 'Process',

@@ -15,7 +15,6 @@ class OrderPage extends StatelessWidget {
         title: const Text('Penjualan'),
       ),
       body: ListView.separated(
-        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         itemCount: products.length,
         separatorBuilder: (context, index) => const SpaceHeight(20.0),
