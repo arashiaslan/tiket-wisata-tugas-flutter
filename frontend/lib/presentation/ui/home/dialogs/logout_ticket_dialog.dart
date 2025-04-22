@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/data/datasources/auth_local_datasource.dart';
 
 import '../../../../core/core.dart';
 import '../../intro/login_page.dart';
 
-class LogoutTicketDialog extends StatelessWidget {
+class LogoutTicketDialog extends StatefulWidget {
   const LogoutTicketDialog({super.key});
+
+  @override
+  State<LogoutTicketDialog> createState() => _LogoutTicketDialogState();
+}
+
+class _LogoutTicketDialogState extends State<LogoutTicketDialog> {
+  final _local = AuthLocalDatasource();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +41,9 @@ class LogoutTicketDialog extends StatelessWidget {
             children: [
               Flexible(
                 child: Button.filled(
-                  onPressed: () => context.pop(),
+                  onPressed: () {
+                    Navigator.pop(context); // Tutup dialog
+                  },
                   label: 'Batalkan',
                   borderRadius: 8.0,
                   color: AppColors.buttonCancel,
@@ -45,9 +55,11 @@ class LogoutTicketDialog extends StatelessWidget {
               const SpaceWidth(12.0),
               Flexible(
                 child: Button.filled(
-                  onPressed: () {
-                    context.pushAndRemoveUntil(
-                        const LoginPage(), (route) => false);
+                  onPressed: () async {
+                    await _local.logout(); // Hapus token
+                    if (mounted) {
+                      context.pushAndRemoveUntil(const LoginPage(), (route) => false);
+                    }
                   },
                   label: 'Logout',
                   borderRadius: 8.0,

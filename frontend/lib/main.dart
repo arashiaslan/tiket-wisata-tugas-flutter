@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/data/datasources/auth_local_datasource.dart';
 import 'package:frontend/data/datasources/auth_remote_datasource.dart';
 import 'package:frontend/data/repository/auth_repository_impl.dart';
 import 'package:frontend/domain/usecases/login_usecase.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
                 AuthRemoteDatasource(),
               )
             ),
+            AuthLocalDatasource(),
           ),
         ),
       ],

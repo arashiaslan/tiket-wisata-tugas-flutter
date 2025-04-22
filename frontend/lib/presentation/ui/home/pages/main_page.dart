@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/data/datasources/auth_local_datasource.dart';
 
 import '../../../../core/core.dart';
 import '../widgets/nav_item.dart';
@@ -16,6 +17,23 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final _local = AuthLocalDatasource();
+  String? _token;
+
+  @override
+  void initState() {
+    super.initState();
+    _getToken();
+  }
+
+  Future<void> _getToken() async {
+    final token = await _local.getToken();
+    setState(() {
+      _token = token;
+    });
+    print('main page token: $_token');
+  }
+  
   int _selectedIndex = 0;
   final _pages = [
     const OrderPage(),
